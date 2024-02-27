@@ -1,7 +1,10 @@
+import Navbar from "../components/navbar";
+
 export default function EmployesPage() {
     return (
         <>
-            <h1>PAGINA DE FUNCIONARIO</h1>
+            <Navbar></Navbar>
+            {/* <h1>PAGINA DE FUNCIONARIO</h1> */}
         </>
     );
 }
