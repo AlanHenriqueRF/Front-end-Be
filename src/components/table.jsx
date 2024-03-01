@@ -26,7 +26,7 @@ export default function Table() {
                     </Title>
                     <Tbody>
                         {employee ? employee.map((data) => {
-                            return (<RowTable employee={data} />)
+                            return (<RowTable employee={data} key={data.phone} />)
                         }) : <></>}
                     </Tbody>
                 </BoxTable>
