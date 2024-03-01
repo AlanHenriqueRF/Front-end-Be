@@ -1,6 +1,16 @@
 import { styled } from "styled-components"
+import RowTable from "./rowTable"
+import { useEffect, useState } from "react"
+import ApiEmployees from "../../service/employees"
 
 export default function Table() {
+    const [employee, setEmployee] = useState();
+
+    useEffect(() => {
+        ApiEmployees.getEmployees()
+            .then((data) => { setEmployee(data.data) })
+            .catch((err) => { alert('Reinicie a página, caso persista o erro, o servidor está com problemas'); console.log(err.response.data) })
+    }, [])
     return (
         <>
             <Container>
@@ -15,76 +25,9 @@ export default function Table() {
                         </tr>
                     </Title>
                     <Tbody>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg" alt="" /></td>
-                            <td>Giovana L. Arruda</td>
-                            <td>Front-end</td>
-                            <td>00/00/0000</td>
-                            <td>+55 (55) 55555-555</td>
-                        </tr>
+                        {employee ? employee.map((data) => {
+                            return (<RowTable employee={data} />)
+                        }) : <></>}
                     </Tbody>
                 </BoxTable>
             </Container>
