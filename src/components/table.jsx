@@ -1,7 +1,8 @@
 import { styled } from "styled-components"
 import RowTable from "./rowTable"
 import { useEffect, useState } from "react"
-import ApiEmployees from "../../service/employees"
+import ApiEmployees from "../service/employees";
+
 
 export default function Table() {
     const [employee, setEmployee] = useState();

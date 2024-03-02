@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
-
-function formatPhone(phone) {
-    phone = phone.trim();
-    return (`+${phone.slice(0, 2)} (${phone.slice(2, 4)}) ${phone.slice(4, 9)}-${phone.slice(9)}`);
-}
+import formatPhone from '../utils/formatPhone';
 
 export default function RowTable({ employee }) {
     const { image, name, job, admission_date, phone } = employee;
