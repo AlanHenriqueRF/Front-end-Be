@@ -16,7 +16,8 @@ export default function EmployesPage() {
                 <HeaderEmployee>
                     <h1>Funcionários</h1>
                     <SearchBox>
-                        <input type="text" placeholder="Pesquisar" value={searchFilter} onChange={(e) => { setSearchFilter(e.target.value) }} ref={inputRef} />
+                        <input type="text" placeholder="Pesquisar" value={searchFilter}
+                            onChange={(e) => { setSearchFilter(e.target.value) }} ref={inputRef} />
                         <ImageSvg inputRef={inputRef} image={search} />
                     </SearchBox>
                 </HeaderEmployee>

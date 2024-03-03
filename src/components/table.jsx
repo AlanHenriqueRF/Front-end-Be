@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 export default function Table({ searchFilter }) {
     const [employee, setEmployee] = useState();
 
-
     useEffect(() => {
         ApiEmployees.getEmployees()
             .then((data) => {
@@ -20,7 +19,10 @@ export default function Table({ searchFilter }) {
                     setEmployee(data.data)
                 }
             })
-            .catch((err) => { alert('Reinicie a página, caso persista o erro, o servidor está com problemas'); console.log(err.response.data) })
+            .catch((err) => { 
+                alert('Reinicie a página, caso persista o erro, o servidor está com problemas');
+                console.log(err.response.data);
+            })
 
 
     }, [searchFilter])
