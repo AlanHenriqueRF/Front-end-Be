@@ -1,13 +1,28 @@
 import { styled } from "styled-components";
 import Navbar from "../components/navbar";
 import Table from "../components/table";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ImageSvg from "../components/imageSvg";
 import search from '../assets/search.svg'
 
 export default function EmployesPage() {
     const inputRef = useRef(null);
     const [searchFilter, setSearchFilter] = useState('');
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+    console.log(windowWidth)
+
 
     return (
         <>
@@ -39,6 +54,14 @@ const HeaderEmployee = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 0 35px 0 32px;
+    @media (max-width: 560px){
+        height: 144px;
+        margin: 0 0px 0 20px;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-around;
+    }
+
 `
 
 const SearchBox = styled.div`
@@ -68,6 +91,17 @@ const SearchBox = styled.div`
     :nth-child(2){
         padding-right: 16px;
         color: #DFDFDF;
+    }
+
+    @media (max-width: 560px){
+        width: 335px;
+        justify-content: space-around;
+        input{
+            padding-left: 0px;
+        }
+        :nth-child(2){
+            padding-right: 0px;
+        }
     }
 
 `
