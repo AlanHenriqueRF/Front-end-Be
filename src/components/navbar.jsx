@@ -15,8 +15,9 @@ const NavbarStyle = styled.div`
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    box-shadow: 0px 2px 5px #cfcfcf /* #888888 */;
-
+    box-shadow: 0px 2px 8px #00000033 ;
+    position: relative;
+    
     :first-child{
         margin-left: 32px;
     }

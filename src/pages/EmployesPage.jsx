@@ -25,7 +25,7 @@ export default function EmployesPage() {
     );
 }
 
-const Container =styled.div`
+const Container = styled.div`
     background-color: #F0F0F0;
     height: 100vh;
 `
@@ -39,6 +39,7 @@ const HeaderEmployee = styled.div`
 `
 
 const SearchBox = styled.div`
+    background-color: #FFFFFF;
     width: 287px;
     height: 48px;
     display: flex;
@@ -52,12 +53,18 @@ const SearchBox = styled.div`
         border: none;
         padding: 12px 0 12px 16px;
         outline: none;
-        color:#9E9E9E;
+        color: #9E9E9E;
         font-size: 16px;
         font-weight: 400;
+        
     }
+    input::placeholder{
+            color: #9E9E9E;
+    }
+    
     :nth-child(2){
         padding-right: 16px;
+        color: #DFDFDF;
     }
 
 `

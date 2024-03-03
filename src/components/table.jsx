@@ -48,22 +48,6 @@ const BoxTable = styled.table`
     }
 `
 
-const Tbody = styled.tbody`
-    tr{
-        height: 49px;
-        td{
-            text-align: left;
-            vertical-align: middle;
-            padding-left: 32px;
-            img{
-                width: 34px;
-                height: 34px;
-                border-radius: 34px;
-            }
-        }
-    }
-`
-
 const Title = styled.thead`
     height: 47px;
     background: linear-gradient(to bottom, #5A84C0, #594ED2);
@@ -78,5 +62,23 @@ const Title = styled.thead`
     }
     :last-child{
         border-top-right-radius: 8px;
+    }
+`
+
+const Tbody = styled.tbody`
+    background: #FFFFFF;
+    tr{
+        height: 49px;
+    
+        td{
+            text-align: left;
+            vertical-align: middle;
+            padding-left: 32px;
+            img{
+                width: 34px;
+                height: 34px;
+                border-radius: 34px;
+            }
+        }
     }
 `
