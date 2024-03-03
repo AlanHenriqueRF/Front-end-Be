@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import formatPhone from '../utils/formatPhone';
+import { formatPhone } from '../utils/formatPhone';
+
 
 export default function RowTable({ employee }) {
     const { image, name, job, admission_date, phone } = employee;

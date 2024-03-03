@@ -2,16 +2,28 @@ import { styled } from "styled-components"
 import RowTable from "./rowTable"
 import { useEffect, useState } from "react"
 import ApiEmployees from "../service/employees";
+import { filterSearch } from "../utils/formatPhone";
+import PropTypes from 'prop-types';
 
 
-export default function Table() {
+export default function Table({ searchFilter }) {
     const [employee, setEmployee] = useState();
+
 
     useEffect(() => {
         ApiEmployees.getEmployees()
-            .then((data) => { setEmployee(data.data) })
+            .then((data) => {
+                if (searchFilter || searchFilter !== ''  ) {
+                    setEmployee(filterSearch(data.data, searchFilter))
+                }
+                else {
+                    setEmployee(data.data)
+                }
+            })
             .catch((err) => { alert('Reinicie a página, caso persista o erro, o servidor está com problemas'); console.log(err.response.data) })
-    }, [])
+
+
+    }, [searchFilter])
     return (
         <>
             <Container>
@@ -27,7 +39,7 @@ export default function Table() {
                     </Title>
                     <Tbody>
                         {employee ? employee.map((data) => {
-                            return (<RowTable employee={data} key={data.admission_date} />)
+                            return (<RowTable employee={data} key={data.id} />)
                         }) : <></>}
                     </Tbody>
                 </BoxTable>
@@ -82,3 +94,8 @@ const Tbody = styled.tbody`
         }
     }
 `
+
+
+Table.propTypes = {
+    searchFilter: PropTypes.string.isRequired
+};

@@ -1,12 +1,14 @@
 import { styled } from "styled-components";
 import Navbar from "../components/navbar";
 import Table from "../components/table";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ImageSvg from "../components/imageSvg";
 import search from '../assets/search.svg'
 
 export default function EmployesPage() {
     const inputRef = useRef(null);
+    const [searchFilter, setSearchFilter] = useState('');
+
     return (
         <>
             <Navbar />
@@ -14,12 +16,12 @@ export default function EmployesPage() {
                 <HeaderEmployee>
                     <h1>Funcionários</h1>
                     <SearchBox>
-                        <input type="text" placeholder="Pesquisar" ref={inputRef} />
+                        <input type="text" placeholder="Pesquisar" value={searchFilter} onChange={(e) => { setSearchFilter(e.target.value) }} ref={inputRef} />
                         <ImageSvg inputRef={inputRef} image={search} />
                     </SearchBox>
                 </HeaderEmployee>
 
-                <Table />
+                <Table searchFilter={searchFilter} />
             </Container>
         </>
     );
