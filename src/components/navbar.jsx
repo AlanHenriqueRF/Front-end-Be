@@ -5,7 +5,7 @@ import logo from "../assets/logo.svg"
 export default function Navbar() {
     return (
         <NavbarStyle>
-            <ImageSvg image={logo}/>
+            <ImageSvg image={logo} />
         </NavbarStyle>
     );
 }
@@ -20,5 +20,10 @@ const NavbarStyle = styled.div`
     
     :first-child{
         margin-left: 32px;
+    }
+    @media (max-width: 560px){
+        :first-child{
+            margin: 0 0px 0 20px;
+        }
     }
 `

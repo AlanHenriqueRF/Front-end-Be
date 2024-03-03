@@ -21,8 +21,6 @@ export default function EmployesPage() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    console.log(windowWidth)
-
 
     return (
         <>

@@ -52,6 +52,9 @@ export default function Table({ searchFilter }) {
 
 const Container = styled.div`
     margin: 0 35px 0 32px;
+    @media (max-width: 560px){
+        display: none;
+    }
 `
 
 const BoxTable = styled.table`
