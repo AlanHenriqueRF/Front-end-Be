@@ -13,7 +13,7 @@ export default function Table({ searchFilter }) {
     useEffect(() => {
         ApiEmployees.getEmployees()
             .then((data) => {
-                if (searchFilter || searchFilter !== ''  ) {
+                if (searchFilter || searchFilter !== '') {
                     setEmployee(filterSearch(data.data, searchFilter))
                 }
                 else {
@@ -25,26 +25,26 @@ export default function Table({ searchFilter }) {
 
     }, [searchFilter])
     return (
-        <>
-            <Container>
-                <BoxTable>
-                    <Title>
-                        <tr>
-                            <th scope="col">FOTO</th>
-                            <th scope="col">NOME</th>
-                            <th scope="col">CARGO</th>
-                            <th scope="col">DATA DE ADMISSÃO</th>
-                            <th scope="col">TELEFONE</th>
-                        </tr>
-                    </Title>
-                    <Tbody>
-                        {employee ? employee.map((data) => {
-                            return (<RowTable employee={data} key={data.id} />)
-                        }) : <></>}
-                    </Tbody>
-                </BoxTable>
-            </Container>
-        </>
+
+        <Container>
+            <BoxTable>
+                <Title>
+                    <tr>
+                        <th scope="col">FOTO</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">CARGO</th>
+                        <th scope="col">DATA DE ADMISSÃO</th>
+                        <th scope="col">TELEFONE</th>
+                    </tr>
+                </Title>
+                <Tbody>
+                    {employee ? employee.map((data) => {
+                        return (<RowTable employee={data} key={data.id} />)
+                    }) : <></>}
+                </Tbody>
+            </BoxTable>
+        </Container>
+
     )
 }
 

@@ -7,15 +7,13 @@ export default function RowTable({ employee }) {
     const date = new Date(admission_date).toLocaleDateString();
     const cellNumber = formatPhone(phone);
     return (
-        <>
-            <tr>
-                <td><img src={image} alt="" /></td>
-                <td>{name}</td>
-                <td>{job}</td>
-                <td>{date}</td>
-                <td>{cellNumber}</td>
-            </tr>
-        </>
+        <tr>
+            <td><img src={image} alt="" /></td>
+            <td>{name}</td>
+            <td>{job}</td>
+            <td>{date}</td>
+            <td>{cellNumber}</td>
+        </tr>
     )
 }
 
