@@ -25,7 +25,9 @@ export default function RowTable({ employee, windowWidth }) {
                     <td>{date}</td>
                     <td>{cellNumber}</td>
                 </> :
-                    <td onClick={() => setActive(!active)} ><img src={active ? charmUp : charmDown} alt="" /></td>}
+                    <td >
+                        <img src={active ? charmUp : charmDown} onClick={() => setActive(!active)} alt="" />
+                    </td>}
             </ Rowemployee>
             {active && windowWidth <= 560 && (
                 <>
@@ -77,6 +79,7 @@ const Rowemployee = styled.tr`
             width: 34px;
             height: 34px;
             border-radius: 34px;
+            cursor: pointer;
         }
         @media (max-width: 560px){
             text-align:center;

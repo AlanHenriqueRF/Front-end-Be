@@ -6,7 +6,6 @@ import { filterSearch } from "../utils/formatPhone";
 import PropTypes from 'prop-types';
 import ellipse from '../assets/ellipse.svg'
 
-
 export default function Table({ searchFilter }) {
     const [employee, setEmployee] = useState();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -51,11 +50,11 @@ export default function Table({ searchFilter }) {
                         </> : <th><img src={ellipse} alt="" /></th>}
                     </tr>
                 </Title>
-                <Tbody>
+                <CorpoContainer>
                     {employee ? employee.map((data) => {
                         return (<RowTable employee={data} key={data.id} windowWidth={windowWidth} />)
                     }) : <></>}
-                </Tbody>
+                </CorpoContainer>
             </BoxTable>
         </Container>
 
@@ -101,7 +100,7 @@ const Title = styled.thead`
     }
 `
 
-const Tbody = styled.tbody`
+const CorpoContainer = styled.tbody`
     background: #FFFFFF;
 `
 
