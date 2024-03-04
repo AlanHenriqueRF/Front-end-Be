@@ -59,17 +59,6 @@ export default function RowTable({ employee, windowWidth }) {
     )
 }
 
-RowTable.propTypes = {
-    employee: PropTypes.shape({
-        image: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        job: PropTypes.string.isRequired,
-        admission_date: PropTypes.string.isRequired,
-        phone: PropTypes.string.isRequired
-    }).isRequired,
-    windowWidth: PropTypes.number.isRequired
-};
-
 const Rowemployee = styled.tr`
     height: 49px;
     box-shadow: ${props => props.boxshadow} ;
@@ -117,3 +106,14 @@ const Cargo = styled.div`
 const TelefoneContainer = styled.div`
     margin-bottom: 32px;
 `
+
+RowTable.propTypes = {
+    employee: PropTypes.shape({
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        job: PropTypes.string.isRequired,
+        admission_date: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired
+    }).isRequired,
+    windowWidth: PropTypes.number.isRequired
+};
