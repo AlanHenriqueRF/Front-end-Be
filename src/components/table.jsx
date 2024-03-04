@@ -4,12 +4,17 @@ import { useEffect, useState } from "react"
 import ApiEmployees from "../service/employees";
 import { filterSearch } from "../utils/formatPhone";
 import PropTypes from 'prop-types';
+import ellipse from '../assets/ellipse.svg'
 
 
 export default function Table({ searchFilter }) {
     const [employee, setEmployee] = useState();
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
         ApiEmployees.getEmployees()
             .then((data) => {
                 if (searchFilter || searchFilter !== '') {
@@ -19,13 +24,18 @@ export default function Table({ searchFilter }) {
                     setEmployee(data.data)
                 }
             })
-            .catch((err) => { 
+            .catch((err) => {
                 alert('Reinicie a página, caso persista o erro, o servidor está com problemas');
                 console.log(err.response.data);
             })
+        window.addEventListener('resize', handleResize);
 
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
 
     }, [searchFilter])
+
     return (
 
         <Container>
@@ -34,14 +44,16 @@ export default function Table({ searchFilter }) {
                     <tr>
                         <th scope="col">FOTO</th>
                         <th scope="col">NOME</th>
-                        <th scope="col">CARGO</th>
-                        <th scope="col">DATA DE ADMISSÃO</th>
-                        <th scope="col">TELEFONE</th>
+                        {windowWidth > 560 ? <>
+                            <th scope="col">CARGO</th>
+                            <th scope="col">DATA DE ADMISSÃO</th>
+                            <th scope="col">TELEFONE</th>
+                        </> : <th><img src={ellipse} alt="" /></th>}
                     </tr>
                 </Title>
                 <Tbody>
                     {employee ? employee.map((data) => {
-                        return (<RowTable employee={data} key={data.id} />)
+                        return (<RowTable employee={data} key={data.id} windowWidth={windowWidth} />)
                     }) : <></>}
                 </Tbody>
             </BoxTable>
@@ -53,16 +65,14 @@ export default function Table({ searchFilter }) {
 const Container = styled.div`
     margin: 0 35px 0 32px;
     @media (max-width: 560px){
-        display: none;
+        margin: 0 18px 0 20px;
     }
 `
 
 const BoxTable = styled.table`
     width: 100%;
     border-collapse: separate;
-    tr{
-        box-shadow: 0 1px 2px #00000033;
-    }
+    
 `
 
 const Title = styled.thead`
@@ -73,31 +83,26 @@ const Title = styled.thead`
         text-align: left;
         vertical-align: middle;
         padding-left: 32px;
+        @media (max-width: 560px){
+            padding: 0;
+            text-align: center;
+        }
     }
-    :first-child{
+    th:first-child{
         border-top-left-radius: 8px;
     }
-    :last-child{
+    th:nth-child(2){
+        @media (max-width: 560px){
+            padding: 0 30px 0 30px;
+        }
+    }
+    th:last-child{
         border-top-right-radius: 8px;
     }
 `
 
 const Tbody = styled.tbody`
     background: #FFFFFF;
-    tr{
-        height: 49px;
-    
-        td{
-            text-align: left;
-            vertical-align: middle;
-            padding-left: 32px;
-            img{
-                width: 34px;
-                height: 34px;
-                border-radius: 34px;
-            }
-        }
-    }
 `
 
 

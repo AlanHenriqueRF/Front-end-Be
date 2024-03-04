@@ -1,26 +1,13 @@
 import { styled } from "styled-components";
 import Navbar from "../components/navbar";
 import Table from "../components/table";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ImageSvg from "../components/imageSvg";
 import search from '../assets/search.svg'
 
 export default function EmployesPage() {
     const inputRef = useRef(null);
     const [searchFilter, setSearchFilter] = useState('');
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     return (
         <>
@@ -100,6 +87,10 @@ const SearchBox = styled.div`
         :nth-child(2){
             padding-right: 0px;
         }
+    }
+
+    @media (max-width: 375px){
+        width: calc(100% - 18px);
     }
 
 `
